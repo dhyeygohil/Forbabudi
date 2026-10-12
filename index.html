@@ -1,425 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sweetest Babu</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Canvas Confetti CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- Google Fonts: Poppins and Caveat for handwritten warmth -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 50%, #f3e8ff 100%);
-            overflow-x: hidden;
-        }
-
-        .font-handwritten {
-            font-family: 'Caveat', cursive;
-        }
-
-        .font-heading {
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        /* Floating background items */
-        .floating-element {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-            animation: floatUpward 14s linear infinite;
-        }
-
-        @keyframes floatUpward {
-            0% {
-                transform: translateY(105vh) scale(0.7) rotate(0deg);
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.7;
-            }
-            85% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-15vh) scale(1.1) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Soft glowing pulse */
-        .soft-pulse {
-            animation: softPulse 2.8s ease-in-out infinite;
-        }
-
-        @keyframes softPulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.03);
-            }
-        }
-
-        /* Card flip effect for the movie ticket */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-
-        .flip-inner {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .flip-inner.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .flip-front, .flip-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .flip-back {
-            transform: rotateY(180deg);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Babu 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: linear-gradient(135deg, #ffeef4 0%, #fff4e8 50%, #f4eaff 100%);
+      font-family: 'Nunito', sans-serif;
+      color: #4a3b4e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 80px;
+    }
+    .wrapper {
+      max-width: 580px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .hero-box {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 30px 22px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(220, 150, 170, 0.2);
+      border: 2px solid #ffe1ec;
+    }
+    .badge {
+      display: inline-block;
+      background: #ffe0eb;
+      color: #d63f6a;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 46px;
+      color: #c93b67;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: #795d73;
+      line-height: 1.5;
+    }
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 22px 20px;
+      box-shadow: 0 8px 24px rgba(180, 130, 150, 0.13);
+      border: 1px solid #ffeff5;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(180, 130, 150, 0.18);
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #b1375d;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #c93b67;
+      background: #fff0f5;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .card-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #554455;
+    }
+    .extra-note {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #fff3f7;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #633f52;
+      border-left: 4px solid #f48fb1;
+    }
+    .extra-note.visible {
+      display: block;
+      animation: popIn 0.25s ease;
+    }
+    .meter-card {
+      background: white;
+      border-radius: 22px;
+      padding: 22px 20px;
+      box-shadow: 0 8px 24px rgba(180, 130, 150, 0.13);
+      text-align: center;
+    }
+    .meter-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #b1375d;
+      margin-bottom: 4px;
+    }
+    .meter-sub {
+      font-size: 13px;
+      color: #7a6275;
+      margin-bottom: 14px;
+    }
+    .meter-bar-outer {
+      width: 100%;
+      height: 18px;
+      background: #fce4ec;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .meter-bar-inner {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+    .meter-status {
+      font-size: 14px;
+      font-weight: 700;
+      color: #b1375d;
+      margin-bottom: 12px;
+    }
+    .meter-btn {
+      background: #fce4ec;
+      color: #c2185b;
+      border: none;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .meter-btn:hover {
+      background: #f8bbd0;
+      transform: scale(1.03);
+    }
+    .ticket-card {
+      background: linear-gradient(135deg, #f8f0ff 0%, #eef5ff 100%);
+      border: 2px dashed #b79dd6;
+      border-radius: 24px;
+      padding: 24px 20px;
+      position: relative;
+    }
+    .ticket-badge {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #6a3d9b;
+      margin-bottom: 4px;
+    }
+    .movie-headline {
+      font-family: 'Caveat', cursive;
+      font-size: 34px;
+      color: #532579;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .ticket-details {
+      font-size: 14px;
+      color: #553e66;
+      line-height: 1.6;
+    }
+    .ticket-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ticket-tag {
+      background: white;
+      color: #6a3d9b;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(106, 61, 155, 0.1);
+    }
+    .ask-card {
+      background: white;
+      border-radius: 26px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(220, 150, 170, 0.22);
+      border: 2px solid #ffe1ec;
+    }
+    .ask-card h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 36px;
+      color: #c93b67;
+      margin-bottom: 6px;
+    }
+    .ask-sub {
+      font-size: 14.5px;
+      color: #795d73;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+      min-height: 60px;
+      position: relative;
+    }
+    .btn-yes {
+      background: #e74c78;
+      color: white;
+      border: none;
+      padding: 13px 30px;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 5px 16px rgba(231, 76, 120, 0.4);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-yes:hover {
+      background: #d63765;
+      transform: scale(1.05);
+    }
+    .btn-no {
+      background: #eee3ed;
+      color: #7a6176;
+      border: none;
+      padding: 13px 26px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.15s ease;
+    }
+    .celebration-box {
+      display: none;
+      margin-top: 20px;
+      background: #fff0f5;
+      border-radius: 20px;
+      padding: 24px 18px;
+      border: 2px solid #ffd1df;
+    }
+    .celebration-box.active {
+      display: block;
+      animation: popIn 0.3s ease;
+    }
+    .heart-icon {
+      font-size: 44px;
+      margin-bottom: 6px;
+    }
+    .celeb-title {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      color: #c93b67;
+      margin-bottom: 6px;
+    }
+    .celeb-msg {
+      font-size: 14.5px;
+      color: #553e4f;
+      line-height: 1.6;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
-<body class="min-h-screen text-slate-700 relative flex flex-col items-center selection:bg-pink-200">
+<body>
 
-    <div id="floating-container"></div>
+  <div class="wrapper">
 
-    <main class="w-full max-w-2xl px-4 py-8 sm:py-12 relative z-10 flex flex-col items-center gap-8">
-        
-        <!-- Header Banner -->
-        <header class="text-center w-full">
-            <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-5 py-2 rounded-full shadow-sm border border-pink-100 text-pink-500 font-semibold text-sm mb-4">
-                <span>🧸</span>
-                <span>A very very sincere message for Babu</span>
-                <span>🌸</span>
-            </div>
-            
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-600 font-heading tracking-wide mb-2">
-                I am so so sorrry Babu 🥺
-            </h1>
-            <p class="text-slate-500 text-base sm:text-lg">
-                Please listen to what my heart wants to say
-            </p>
-        </header>
+    <div class="hero-box">
+      <div class="badge">Official Apology Note</div>
+      <h1>Sorrry Babu</h1>
+      <p class="hero-sub">Please read this with an open heart because I am realllly very sorry</p>
+    </div>
 
-        <!-- Sincere Note Box -->
-        <section class="w-full bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl shadow-pink-100/60 border border-pink-100 transition-all hover:shadow-2xl">
-            <div class="flex items-center gap-3 mb-4 border-b border-pink-50 pb-3">
-                <span class="text-3xl">💌</span>
-                <h2 class="text-xl font-bold text-pink-700">Open letter from your silly boy</h2>
-            </div>
-            
-            <div class="space-y-4 text-slate-600 leading-relaxed text-base sm:text-lg">
-                <p>
-                    My dearest <strong class="text-pink-500">Babu</strong>,
-                </p>
-                <p>
-                    I know I could not give you proper time for the past two days and I feel realllly awful about it. You deserve all the attention, cuddles, and sweet texts in the world, and I made you feel lonely instead.
-                </p>
-                <p class="italic text-pink-600 font-handwritten text-2xl sm:text-3xl bg-pink-50/70 p-3 rounded-2xl border border-pink-100">
-                    "I got so caught up in work and things... but that is honestly no excuse. You are my whole universe, and not talking to you properly felt so empty."
-                </p>
-                <p>
-                    I was missing you every single second even when I was busy. I promissse to make it up to you with unlimited hugs, your favorite snacks, and all my undivided attention.
-                </p>
-            </div>
-        </section>
+    <div class="card" onclick="toggleCard('note1', 'hint1')">
+      <div class="card-top">
+        <div class="card-title">💔 The past two days</div>
+        <span class="card-badge" id="hint1">Tap to open ▾</span>
+      </div>
+      <div class="card-text">
+        I know I was not able to give you proper time for the past two days and I feel so terrible abt it. The worst part was not knowing abt your day and not sending you reels like we always do. It felt so empty without talking to you.
+      </div>
+      <div class="extra-note" id="note1">
+        My whole day felt completely incomplete without you. Missing out on the little details of your day and not sharing our regular reels together is literally the worst feeling. You are the center of my everyday routine and I felt so lost.
+      </div>
+    </div>
 
-        <section class="w-full">
-            <h3 class="text-center text-lg font-bold text-slate-700 mb-3 flex items-center justify-center gap-2">
-                <span>✨</span> Tap to open little thoughts for you <span>✨</span>
-            </h3>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <!-- Card 1 -->
-                <button onclick="revealThought(1)" id="btn-thought-1" class="text-left bg-white/80 hover:bg-white p-4 rounded-2xl border border-pink-100 shadow-sm transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-2xl">🍯</span>
-                        <span class="text-xs bg-pink-100 text-pink-600 font-bold px-2 py-0.5 rounded-full">Tap me</span>
-                    </div>
-                    <h4 class="font-bold text-slate-800 text-sm">Why you matter</h4>
-                    <p id="thought-1" class="text-xs text-slate-500 mt-1 line-clamp-2">You make even ordinary days feel cozy and bright...</p>
-                </button>
+    <div class="card" onclick="toggleCard('note2', 'hint2')">
+      <div class="card-top">
+        <div class="card-title">🥺 My Penance</div>
+        <span class="card-badge" id="hint2">Tap to open ▾</span>
+      </div>
+      <div class="card-text">
+        I promissse you from now on I will make everything up to you. For my penance I will literally do anything you tell me to do without any complaints at all.
+      </div>
+      <div class="extra-note" id="note2">
+        You have unlimited demands now. Unlimited massages, hearing every single story, watching whatever you pick, ordering whatever treats you crave. Whatever my Babu asks for her Gawar will do without hesitation.
+      </div>
+    </div>
 
-                <!-- Card 2 -->
-                <button onclick="revealThought(2)" id="btn-thought-2" class="text-left bg-white/80 hover:bg-white p-4 rounded-2xl border border-pink-100 shadow-sm transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-2xl">🥺</span>
-                        <span class="text-xs bg-pink-100 text-pink-600 font-bold px-2 py-0.5 rounded-full">Tap me</span>
-                    </div>
-                    <h4 class="font-bold text-slate-800 text-sm">The past 2 days</h4>
-                    <p id="thought-2" class="text-xs text-slate-500 mt-1 line-clamp-2">Not knowing abt your day and not sending you reels made me miss you so badly...</p>
-                </button>
+    <div class="meter-card">
+      <div class="meter-title">Babu Anger Cooling Station</div>
+      <div class="meter-sub">Tap the button to cool down your anger meter</div>
+      <div class="meter-bar-outer">
+        <div class="meter-bar-inner" id="meterFill"></div>
+      </div>
+      <div class="meter-status" id="meterLabel">Anger level: 100% (Very angry Babu 😤)</div>
+      <button class="meter-btn" onclick="coolDown()">Tap to soothe anger 🌸</button>
+    </div>
 
-                <!-- Card 3 -->
-                <button onclick="revealThought(3)" id="btn-thought-3" class="text-left bg-white/80 hover:bg-white p-4 rounded-2xl border border-pink-100 shadow-sm transition-all duration-300 hover:scale-[1.02]">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-2xl">🍧</span>
-                        <span class="text-xs bg-pink-100 text-pink-600 font-bold px-2 py-0.5 rounded-full">Tap me</span>
-                    </div>
-                    <h4 class="font-bold text-slate-800 text-sm">My penance</h4>
-                    <p id="thought-3" class="text-xs text-slate-500 mt-1 line-clamp-2">I will do anything you tell me to do without any complaints...</p>
-                </button>
-            </div>
-        </section>
+    <div class="ticket-card">
+      <div class="ticket-badge">Mandatory Cinema Date Pass</div>
+      <div class="movie-headline">Frozen 3 Date Ticket ❄️</div>
+      <p class="ticket-details">
+        This pass officially guarantees that Babu and her Gawar are watching Frozen 3 together in the cinema the very week it releases. No excuses, no delays, just you and me.
+      </p>
+      <div class="ticket-row">
+        <span class="ticket-tag">🍿 Extra buttery popcorn</span>
+        <span class="ticket-tag">🥤 Giant soda</span>
+        <span class="ticket-tag">🤝 Warm hand holding</span>
+        <span class="ticket-tag">✨ Zero distractions</span>
+      </div>
+    </div>
 
-        <section class="w-full">
-            <div class="perspective-1000 w-full cursor-pointer" onclick="flipTicket()">
-                <div id="movie-ticket" class="flip-inner relative w-full h-64 sm:h-56">
-                    
-                    <!-- Ticket Front -->
-                    <div class="flip-front absolute inset-0 w-full h-full bg-gradient-to-r from-sky-100 via-indigo-50 to-pink-100 rounded-3xl p-6 border-2 border-dashed border-sky-300 shadow-md flex flex-col justify-between">
-                        <div class="flex items-center justify-between">
-                            <span class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Special VIP Pass</span>
-                            <span class="text-2xl">❄️ 👑 ⛄</span>
-                        </div>
-                        
-                        <div class="text-center my-auto">
-                            <h3 class="text-xl sm:text-2xl font-extrabold text-sky-800 font-heading">
-                                Frozen 3 Movie Date Promise
-                            </h3>
-                            <p class="text-slate-600 text-sm mt-1">
-                                And remember Babu, we still have to watch Frozen 3 together when it comes out!
-                            </p>
-                        </div>
-                        
-                        <div class="flex justify-between items-center text-xs text-sky-700 font-semibold border-t border-sky-200/80 pt-2">
-                            <span>Admit: Just You and Me</span>
-                            <span class="bg-white/80 px-2 py-1 rounded-lg border border-sky-200">Tap to flip pass 🔄</span>
-                        </div>
-                    </div>
+    <div class="ask-card">
+      <h2>Will you forgive your Gawar?</h2>
+      <p class="ask-sub">You know he loves you more than anything in this entire world</p>
 
-                    <!-- Ticket Back -->
-                    <div class="flip-back absolute inset-0 w-full h-full bg-gradient-to-r from-pink-100 via-purple-50 to-sky-100 rounded-3xl p-6 border-2 border-dashed border-pink-300 shadow-md flex flex-col justify-between">
-                        <div class="flex items-center justify-between">
-                            <span class="bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">Date Agreement</span>
-                            <span class="text-2xl">🍿 🥤 ✨</span>
-                        </div>
-                        
-                        <div class="space-y-1 text-center my-auto">
-                            <p class="text-pink-700 font-bold text-sm">Included in our Frozen 3 package:</p>
-                            <p class="text-xs text-slate-600">Extra butter popcorn + Warm hugs whenever Elsa sings + You pick the best cinema seats!</p>
-                            <p class="font-handwritten text-2xl text-purple-700">No excuses, this date is locked forever!</p>
-                        </div>
+      <div class="btn-row" id="choiceRow">
+        <button class="btn-yes" onclick="celebrateForgive()">Yes, I forgive you</button>
+        <button class="btn-no" id="dodgeBtn" onmouseover="dodge()" onclick="dodge()">No</button>
+      </div>
 
-                        <div class="flex justify-between items-center text-xs text-pink-600 font-semibold border-t border-pink-200/80 pt-2">
-                            <span>Valid forever and ever</span>
-                            <span class="bg-white/80 px-2 py-1 rounded-lg border border-pink-200">Tap to flip back 🔄</span>
-                        </div>
-                    </div>
+      <div class="celebration-box" id="celebrationCard">
+        <div class="heart-icon">💖✨</div>
+        <div class="celeb-title">Yay Babu thank you!</div>
+        <div class="celeb-msg">
+          You are the sweetest girl ever. Right now I am working on a bracelet for you to wear and I cannot wait to put it on your wrist. Big warm hugs and remember we are still watching Frozen 3 together no matter what!
+        </div>
+      </div>
+    </div>
 
-                </div>
-            </div>
-            <p class="text-center text-xs text-slate-400 mt-2">Tap ticket above to check our cinema perks</p>
-        </section>
+  </div>
 
-        <section class="w-full bg-white/80 backdrop-blur rounded-3xl p-6 shadow-md border border-pink-100 flex flex-col items-center">
-            <h3 class="font-bold text-slate-700 mb-2 flex items-center gap-2">
-                <span>💖</span> How much is your anger cooling down?
-            </h3>
-            
-            <div class="w-full bg-pink-100 h-5 rounded-full overflow-hidden p-0.5 border border-pink-200 my-3">
-                <div id="meter-bar" class="bg-gradient-to-r from-pink-400 to-rose-500 h-full rounded-full transition-all duration-500 w-1/4"></div>
-            </div>
+  <script>
+    function toggleCard(noteId, hintId) {
+      const note = document.getElementById(noteId);
+      const hint = document.getElementById(hintId);
+      if (note.classList.contains('visible')) {
+        note.classList.remove('visible');
+        hint.textContent = 'Tap to open ▾';
+      } else {
+        note.classList.add('visible');
+        hint.textContent = 'Tap to hide ▴';
+      }
+    }
 
-            <p id="meter-label" class="text-sm font-semibold text-pink-600 mb-4">
-                Still a little upset with me (25%)
-            </p>
+    let angerPercent = 100;
+    const labels = [
+      'Anger level: 0% (Fully melted heart 💖)',
+      'Anger level: 25% (Secretly smiling 😊)',
+      'Anger level: 50% (Slightly less mad 🥺)',
+      'Anger level: 75% (Still pouting 😾)',
+      'Anger level: 100% (Very angry Babu 😤)'
+    ];
 
-            <button onclick="increaseForgiveness()" class="px-5 py-2.5 bg-pink-500 hover:bg-pink-600 active:scale-95 text-white font-bold rounded-2xl shadow-sm transition-all flex items-center gap-2 text-sm">
-                <span>Send a forgiving headpat</span>
-                <span>✨</span>
-            </button>
-        </section>
-
-        <section id="decision-section" class="w-full bg-white/90 backdrop-blur rounded-3xl p-6 sm:p-8 shadow-xl border border-pink-200 text-center relative overflow-hidden">
-            <h3 class="text-2xl font-extrabold text-pink-600 font-heading mb-2">
-                Will you forgive your Gawar, Babu? 🥺
-            </h3>
-            <p class="text-slate-500 text-sm mb-6">
-                Be honest with me, but remember I love you to the moon and back
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 min-h-[100px] relative" id="buttons-wrapper">
-                <button id="yes-btn" onclick="celebrateForgiveness()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-lg rounded-2xl shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95">
-                    Yes, I forgive you Babu! 💕
-                </button>
-
-                <button id="no-btn" onmouseover="dodgeNoButton()" onclick="dodgeNoButton()" class="w-full sm:w-auto px-8 py-3.5 bg-slate-200 hover:bg-slate-300 text-slate-600 font-bold text-lg rounded-2xl shadow-sm transition-all">
-                    No, stay in time out 😤
-                </button>
-            </div>
-
-            <!-- Success confirmation pop-up message -->
-            <div id="forgive-message" class="hidden mt-6 bg-pink-50 border border-pink-200 p-5 rounded-2xl animate-fade-in">
-                <span class="text-4xl block mb-2">🎉🥰🥳</span>
-                <h4 class="text-xl font-bold text-pink-700">YAY! Thank you my sweet Babu!</h4>
-                <p class="text-slate-600 text-sm mt-1">
-                    You just made my entire week so bright again! I am working on a bracelet for you, bringing warm hugs, and we are counting down the days for Frozen 3 together!
-                </p>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="text-center text-xs text-slate-400 pb-6">
-            Handcrafted with endless love, sincere apologies, and infinite care for Babu ❤️
-        </footer>
-
-    </main>
-
-    <script>
-        // Floating heart and snowflake generator
-        function createFloatingElements() {
-            const container = document.getElementById('floating-container');
-            const icons = ['🌸', '💖', '❄️', '✨', '🧸', '💕', '🌷'];
-            
-            for (let i = 0; i < 18; i++) {
-                const el = document.createElement('div');
-                el.className = 'floating-element';
-                el.innerText = icons[Math.floor(Math.random() * icons.length)];
-                el.style.left = Math.random() * 95 + 'vw';
-                el.style.animationDuration = (8 + Math.random() * 10) + 's';
-                el.style.animationDelay = (Math.random() * 8) + 's';
-                el.style.fontSize = (16 + Math.random() * 20) + 'px';
-                container.appendChild(el);
-            }
+    function coolDown() {
+      if (angerPercent > 0) {
+        angerPercent -= 25;
+        document.getElementById('meterFill').style.width = angerPercent + '%';
+        const index = Math.round(angerPercent / 25);
+        document.getElementById('meterLabel').textContent = labels[index];
+        if (angerPercent === 0) {
+          confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } });
         }
+      }
+    }
 
-        // Thought cards reveal expansion
-        const thoughtDetails = {
-            1: "You make even ordinary days feel cozy and bright. Without talking to you, everything feels dull and colorless. You are realllly the sweetest blessing in my life.",
-            2: "The past two days without proper chats felt totally wrong. The worst part was not knowing abt your day and not sending you reels every hour like I always do.",
-            3: "I will do absolutely anything and everything you tell me to do without any complaints! Plus giving you infinite cuddles and taking you to Frozen 3!"
-        };
+    function dodge() {
+      const btn = document.getElementById('dodgeBtn');
+      const randomX = (Math.random() - 0.5) * 180;
+      const randomY = (Math.random() - 0.5) * 90;
+      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
 
-        function revealThought(id) {
-            const p = document.getElementById('thought-' + id);
-            p.innerText = thoughtDetails[id];
-            p.classList.remove('line-clamp-2', 'text-slate-500');
-            p.classList.add('text-pink-700', 'font-medium');
-            
-            // Tiny celebratory mini burst
-            confetti({
-                particleCount: 15,
-                spread: 40,
-                origin: { y: 0.7 }
-            });
-        }
+    function celebrateForgive() {
+      document.getElementById('celebrationCard').classList.add('active');
+      document.getElementById('choiceRow').style.display = 'none';
 
-        // Ticket flip
-        function flipTicket() {
-            const ticket = document.getElementById('movie-ticket');
-            ticket.classList.toggle('flipped');
-        }
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
 
-        // Forgiveness meter progress
-        let forgivenessLevel = 25;
-        const meterLabels = [
-            "Still a little upset with me (25%)",
-            "Slightly smiling now (50%)",
-            "Almost ready to give hugs (75%)",
-            "Completely melted and happy again! (100% ✨)"
-        ];
-
-        function increaseForgiveness() {
-            if (forgivenessLevel < 100) {
-                forgivenessLevel += 25;
-            } else {
-                forgivenessLevel = 100;
-            }
-
-            const bar = document.getElementById('meter-bar');
-            const label = document.getElementById('meter-label');
-
-            bar.style.width = forgivenessLevel + '%';
-            
-            const index = Math.min(Math.floor(forgivenessLevel / 25) - 1, 3);
-            label.innerText = meterLabels[index];
-
-            if (forgivenessLevel === 100) {
-                confetti({
-                    particleCount: 40,
-                    spread: 60,
-                    origin: { y: 0.6 }
-                });
-            }
-        }
-
-        // Playful runaway 'No' button
-        let dodgeCount = 0;
-        function dodgeNoButton() {
-            const noBtn = document.getElementById('no-btn');
-            const yesBtn = document.getElementById('yes-btn');
-            dodgeCount++;
-
-            if (dodgeCount <= 6) {
-                const randomX = (Math.random() - 0.5) * 220;
-                const randomY = (Math.random() - 0.5) * 120;
-                noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-                
-                // Playfully grow the Yes button slightly
-                const currentScale = 1 + (dodgeCount * 0.08);
-                yesBtn.style.transform = `scale(${currentScale})`;
-            } else {
-                // Eventually it turns into an agreement
-                noBtn.innerText = "Fine, I forgive you too! 🥰";
-                noBtn.classList.remove('bg-slate-200', 'text-slate-600');
-                noBtn.classList.add('bg-pink-300', 'text-pink-800');
-                noBtn.onclick = celebrateForgiveness;
-            }
-        }
-
-        // Celebrate Yes action
-        function celebrateForgiveness() {
-            const message = document.getElementById('forgive-message');
-            message.classList.remove('hidden');
-
-            const bar = document.getElementById('meter-bar');
-            const label = document.getElementById('meter-label');
-            bar.style.width = '100%';
-            label.innerText = "Completely melted and happy again! (100% ✨)";
-
-            // Grand confetti blast
-            const duration = 2.5 * 1000;
-            const end = Date.now() + duration;
-
-            (function frame() {
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#f472b6', '#38bdf8', '#c084fc', '#fb7185']
-                });
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#f472b6', '#38bdf8', '#c084fc', '#fb7185']
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
-        }
-
-        // Initialize on load
-        window.onload = function() {
-            createFloatingElements();
-        };
-    </script>
+      setTimeout(() => {
+        confetti({
+          particleCount: 70,
+          angle: 60,
+          spread: 60,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 70,
+          angle: 120,
+          spread: 60,
+          origin: { x: 1 }
+        });
+      }, 300);
+    }
+  </script>
 </body>
 </html>
